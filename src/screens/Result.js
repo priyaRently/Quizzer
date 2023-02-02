@@ -1,17 +1,18 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Result = ({ navigation, route }) => {
-  const params = route.params
-  console.log(params);
+  const {score} = route.params;
+  const resultBanner= score>10?"https://cdni.iconscout.com/illustration/premium/thumb/men-celebrating-victory-4587301-3856211.png" :"https://cdni.iconscout.com/illustration/free/thumb/concept-about-business-failure-1862195-1580189.png"
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Result</Text>
       <View style={styles.ImageContainer}>
-        <Image source={require('./Result.png')} style={styles.Image}
+        <Image source={{uri: resultBanner}} style={styles.Image}
           resizeMode="contain" />
       </View>
       <View>
+      <Text style={styles.text}>Score: {score}</Text>
         <TouchableOpacity style={styles.button}
           onPress={() => navigation.navigate('Home')}>
           <Text style={styles.buttonText}>
@@ -32,11 +33,11 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   text: {
-    fontSize: 24,
+    fontSize: 30,
     textAlign: 'center',
     fontWeight: 'bold',
     color: 'black',
-    // backgroundColor:'#F0EABE',
+    //  backgroundColor:'#F0EABE',
     padding: 14
   },
   ImageContainer: {
