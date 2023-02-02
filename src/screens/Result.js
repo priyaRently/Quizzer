@@ -1,18 +1,21 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-const Result = ({ navigation }) => {
+const Result = ({ navigation, route }) => {
+  const params = route.params
+  console.log(params);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Result</Text>
       <View style={styles.ImageContainer}>
-        <Image source={require('./Result.png')} style={styles.Image} />
+        <Image source={require('./Result.png')} style={styles.Image}
+          resizeMode="contain" />
       </View>
       <View>
         <TouchableOpacity style={styles.button}
           onPress={() => navigation.navigate('Home')}>
           <Text style={styles.buttonText}>
-            HOME
+            Go to Home
           </Text>
         </TouchableOpacity>
       </View>
